@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}new brocabulary{% endblock %}
+{% block content %}
+<h1>new bro expression</h1>
+<form action="{% url 'new' %}" method="post">
+  {% csrf_token %}
+  <input type="text" id="text" name="text" />
+  <input type="submit" value="add" />
+</form>
+{% endblock %}

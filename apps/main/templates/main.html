@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}bro base{% endblock %}
+{% block content %}
+<h1>bro base</h1>
+<div>
+  {% if expressions %}
+  <form action="{% url 'shout' %}" method="post">
+    {% csrf_token %}
+    <select name="expressionId">
+      {% for expression in expressions %}
+      <option value="{{ expression.id }}">{{ expression.text }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="shout out to the bros" />
+  </form>
+  <p>or</p>
+  {% endif %}
+  <a href="{% url 'new' %}">add to your brocabulary</a>
+</div>
+<hr />
+<h2>Shout outs</h2>
+<div>
+  {% for shout in shouts %}
+  <div>
+    <p>{{ shout.expression.text }}</p>
+    <p>{{ shout.created_at }} • {{ shout.bro.broname }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

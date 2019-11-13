@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}new bro on the block{% endblock %}
+{% block content %}
+<h1>bro up</h1>
+{% if error %}
+<p style="color: red">{{ error }}</p>
+{% endif %}
+<form action="{% url 'register' %}" method="post">
+  {% csrf_token %}
+  <label for="broname">
+    broname:
+    <input type="text" id="broname" name="broname" />
+  </label>
+  <label for="bropass">
+    bropass:
+    <input type="password" id="bropass" name="bropass" />
+  </label>
+  <input type="submit" value="sign me up, bro" />
+</form>
+<p>or wait</p>
+<a href="{% url 'login' %}">I'm already an official bro. Lemme bro in.</a>
+{% endblock %}
